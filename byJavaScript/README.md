@@ -39,7 +39,7 @@ x: 需要查找的值
 A : 已排序的数组
 x : 需要插入的元素
 返回值：无
-- JavaScript 的原始实现，但通常不是最优的解决方式
+- **JavaScript 的原始实现**，但通常不是最优的解决方式
 ```
 function insert(A, x) {
     // 找到这个升序数组中第一个比 b 大的数字
@@ -53,7 +53,7 @@ function insert(A, x) {
     return A;
 }
 ```
-- push 和 splice 还可以在优化一下：
+    - push 和 splice 还可以在优化一下：
 ```
 function insert(A, x) {
     const b = A.find(element => element > x);
@@ -62,7 +62,7 @@ function insert(A, x) {
     return A;
 }
 ```
-- 查找有序数组中第一个比 x 大的输的索引可以直接用 findIndex（）    
+    - 查找有序数组中第一个比 x 大的输的索引可以直接用 findIndex（）    
 ```
 function insert(A, x) {
     const indexb = A.findIndex(element => element > x);
@@ -70,3 +70,47 @@ function insert(A, x) {
     return A;
 }
 ```
+- **非JavaScript 的原始实现**
+    - 定义一个循环不变式，将要插入的数字 x 和数组的数字比较，从最末端最大的数字开始比较，如果比 x 大，则数组里的这个数字就向后移动一位，直到出现比 x 小的数字出现，那么这个数字的后面就可以插入 x 了。
+    - 具体实现：定义一个指针 p，p 指向下一个要比较的数字，p+1 指向疼出来的空位。当 指针 p 指向的数字大于 x 的时候，p 只想的这个数字就要向后移动一位，也就是，移动到 p+1 的位置。当出现比 x 晓得数字的时候，x 就可以放在 p+1 的位置了。
+    ```
+    function insert(A, x) {
+    let p = A.length - 1;
+    while(p > 0 && A[p] > x) {
+        A[p+1] = A[p];
+        p--;
+    }
+    A[p+1] = x;
+    return A;
+    }
+    ```
+- **整个插入排序的方法，也就是把一个无序数组用插入排序的方法变成一个升序数组**
+    - 数组 A = [2, 1, 3, 5, 4, 8, 6]。先看前两位，将第一位看成有序数组，第二位和第一位比较
+        - 第二位 大于 第一位，那么指针 p+1 就指向第二位。
+        - 第二位 小于 第一位，那么指针 p+1 就指向第一位，也就是第一位就向后移动一位。
+    - 这样前两个数字就排列好了，再用相同的方法比较第三位，第四位，直至数组的最后一位。
+    - 注意：这个时候，p 的开始值就不是 A.length 了，而是 A 的各个 index 值，用 i 来表示。i 的初始值是 1。
+    ```
+    function insert(A, i, x) {
+        let p = i - 1;
+        while(p >= 0 && A[p] > x) {
+            A[p+1] = A[p];
+            p--;
+        }
+        A[p+1] = x;
+    }
+
+    function insert_sort(A) {
+        for(let i = 1; i < A.length; i++) {
+            insert(A, i, A[i])
+        }
+    }
+    const A = [2, 1, 6, 3, 5, 4]
+    insert_sort(A)
+    console.log(A)
+    ```
+- 插入排序的执行时间：  
+    - 主循环执行的是 N-1 次，也就是 insert_sort(A) 中 for 循环的次数。N 表示 A 的长度。因为 for 循环执行的时间 远远小于 里面的循环体，所以整个函数的执行时间取决于 for 循环里面的 insert(A, i, A[i]) 的执行时间。
+    - 现在仔细分析一下 insert(A, i, A[i]) 的执行时间。所以就看 insert 函数里面的 while 循环。while 循环的执行时间不固定，所以分为最好的和最坏的这两种不同的情况去讨论。
+        - 最好的情况：每一次 while 循环都是 A[P] < x，这样就不用执行 while 循环，所以总共的循环次数就是 N-1 次。
+        - 最坏的情况：while 要循环 i 次，其中（0 < i < N-1）。最后 while 的循环次数是 1 + 2 + 3 + ... + N-1 = N(N-1)/2
