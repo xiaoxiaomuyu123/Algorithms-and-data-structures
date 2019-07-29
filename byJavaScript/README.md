@@ -20,8 +20,53 @@
 - 查询规模和时间的关系  
 一个数 N 除以多少次 2 可以等于 1。  
 次数 n = log(N)   以 2 为底数，结果用去尾法（向下取整），再加一。可以提升查找效率。
-- 抽象：   
+- 问题抽象：   
 `function bsearch(A, x)`    
 A: 数组  
 x: 需要查找的值
-返回：x 在 A 中的位置，不存在就返回 -1
+返回：x 在 A 中的位置，不存在就返回 -1   
+
+## 插入排序
+- 排序的应用场景：  
+购物车订单，搜索引擎的结果。
+- 插入排序的算法：  
+原数组是有序的，新的元素插入到之前的数组中。也就是，如何在有序的数组中插入一个新值。假设这个数组是升序排列[2, 4, 7, 9, 13]，要新插入的数字是 8  
+    - 8 先和 13 比较，13 比 8 大，所以 13 要向右移动一位；
+    - 8 再和 9 比较，9 比 8 大，所以 9 要向右移动一位；
+    - 8 再和 7 比较，7 比 8 小，8 就放在这个位置；
+- 问题抽象：   
+`function insert(A, x)`  
+A : 已排序的数组
+x : 需要插入的元素
+返回值：无
+- JavaScript 的原始实现，但通常不是最优的解决方式
+```
+function insert(A, x) {
+    // 找到这个升序数组中第一个比 b 大的数字
+    const b = A.find(element => element > x);
+    if(b === undefined) {
+        A.push(x);
+    } else {
+        const indexb = A.indexOf(b);
+        A.splice(indexb, 0, x)
+    }
+    return A;
+}
+```
+- push 和 splice 还可以在优化一下：
+```
+function insert(A, x) {
+    const b = A.find(element => element > x);
+    const indexb = A.indexOf(b);
+    A.splice(indexb === -1 ? A.length : indexb, 0, x)
+    return A;
+}
+```
+- 查找有序数组中第一个比 x 大的输的索引可以直接用 findIndex（）    
+```
+function insert(A, x) {
+    const indexb = A.findIndex(element => element > x);
+    A.splice(indexb === -1 ? A.length : indexb, 0, x);
+    return A;
+}
+```
