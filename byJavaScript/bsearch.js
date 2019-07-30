@@ -2,7 +2,7 @@ function bsearch(A, x) {
     let left = 0, // 查找范围的左边界
         right = A.length - 1, // 查找范围的右边界
         guess  // 猜想值的索引
-    while(left < right) {
+    while(left <= right) {
         guess = Math.floor((left + right)/2 );
         if(A[guess] === x) {
             return guess;
