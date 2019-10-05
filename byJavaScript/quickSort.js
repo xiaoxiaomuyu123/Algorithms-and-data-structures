@@ -33,7 +33,7 @@ function quickSort(arr, lo = 0, hi = arr.length) {
     }
     const p = partion(arr, lo, hi);
     quickSort(arr, lo, p);
-    quickSort(arr, p, hi);
+    quickSort(arr, p + 1, hi);
 }
 
 const arr3 = [10, 50, 30, 90, 40, 80, 70];

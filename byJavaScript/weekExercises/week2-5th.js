@@ -81,7 +81,7 @@ function peak(arr) {
 }
 
 
-console.log(peak([8, 10, 20, 80, 100, 200, 400, 500, 3, 2, 1])) // 500
-console.log(peak([120, 100, 80, 20, 0])) // 120
-console.log(peak([0, 20, 48, 80])) // 80
-console.log(peak([1])) // 1
+console.log(peak([8, 10, 20, 80, 100, 200, 400, 500, 3, 2, 1])); // 500
+console.log(peak([120, 100, 80, 20, 0])); // 120
+console.log(peak([0, 20, 48, 80])); // 80
+console.log(peak([1])); // 1

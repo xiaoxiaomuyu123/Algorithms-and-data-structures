@@ -24,7 +24,7 @@ class Queue {
         }
         const item = this.data(this.q++);
         this.size --;
-        if(this.q === this.size) {
+        if(this.q === this.max - 1) {
             this.q = 0;
         }
         return item;

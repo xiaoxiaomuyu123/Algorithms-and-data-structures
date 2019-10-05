@@ -64,7 +64,7 @@
 /***  归并排序 ****/
 
 function merge(arr, p, q, r) {
-    console.log("p=", p, "q=", q, "r=", r)
+    // console.log("p=", p, "q=", q, "r=", r)
     var arr1 = arr.slice(p, q);
     var arr2 = arr.slice(q, r);
     arr1.push(Number.MAX_SAFE_INTEGER);
@@ -76,8 +76,8 @@ function merge(arr, p, q, r) {
 }
 
 function merge_sort(arr, p, r) {
-    if(r - p < 2) { return }
-    let q = Math.ceil((r+p) / 2);
+    if((r - p) < 2) { return }
+    let q = Math.ceil((r + p) / 2);
     merge_sort(arr, p, q);
     merge_sort(arr, q, r);
     merge(arr, p, q, r);

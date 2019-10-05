@@ -11,7 +11,7 @@ function radix_sort(arr) {
         // 把同里面的数字按照顺序拿出来
         let j = 0;
         buckets.forEach(bucket => {
-            while(bucket.length > 0) {
+            while(bucket.length > 0) { // 必须加这一步的判断，否则报错，会把  NaN 加到 arr 数组中
                 arr[j++] = bucket.shift();
             }
         })

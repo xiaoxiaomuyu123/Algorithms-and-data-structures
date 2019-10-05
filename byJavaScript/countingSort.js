@@ -1,6 +1,7 @@
 function counting_sort(A) {
     // 找到 A 数组的最大值
-    const max = Math.max(...A);
+    const max = Math.max.apply(null, A)
+    // const max = Math.max(...A);
     // 定义 累计数组 B
     const B = Array(max + 1).fill(0);
     // 定义回写数组 C

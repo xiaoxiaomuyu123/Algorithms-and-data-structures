@@ -7,3 +7,5 @@ function steps(n) {
     // 求和之后把最后一项返回
     return s.pop();
 }
+
+console.log(steps(2));

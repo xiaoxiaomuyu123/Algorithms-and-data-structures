@@ -16,5 +16,5 @@ function fib2(n) {
     return b
 }
 
-console.log(fib1(20));
-console.log(fib2(20));
+console.log(fib1(40));
+console.log(fib2(40));

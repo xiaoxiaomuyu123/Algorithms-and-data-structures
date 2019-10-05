@@ -33,7 +33,7 @@
 // function insert(A, x) {
 //     // p 指向下一个需要和 x 比较的元素的索引，p+1 指向空位
 //     let p = A.length - 1;
-//     while(p > 0 && A[p] > x) {
+//     while(p >= 0 && A[p] > x) {
 //         A[p+1] = A[p];
 //         p--;
 //     }
