@@ -23,7 +23,7 @@ function bucket_sort(arr, k, s) {
         buckets[i].push(number);
     })
 
-    // 遍历每个桶，把桶中的数字进行排序
+    // 遍历每个桶，把桶中的数字进行插入排序
     buckets.forEach(bucket => {
         insert_sort(bucket);
     })

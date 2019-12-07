@@ -2,6 +2,22 @@
 //
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const arr = [1, 3, 4, 5, 7, 9];
 // console.log(bsearch(arr, 5)); // 3
 // console.log(bsearch(arr, 8)); // -1
@@ -12,8 +28,25 @@
 /******  插入排序  ******/
 
 
+
+
+
+
 // const arr0 = [1, 3, 5];
 // console.log(insert(arr0, 4));
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // const arr = [2, 1, 6, 3, 5, 4];
@@ -26,6 +59,148 @@
 
 /******  冒泡排序  ******/
 //
+function swap(arr, i, j) {
+    let t = arr[i];
+    arr[i] = arr[j];
+    arr[j] = t;
+}
+
+function bubble_sort(arr) {
+    for(let i = arr.length - 1; i >= 0 ; i--) {
+        for(let j = 0; j <= i; j++) {
+            arr[j + 1] < arr[j] && swap(arr, j, j+1)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+function fun(s0, s1, s2) {
+    let result0 = [];
+    s0.filter(function(n) {
+        if(s1.indexOf(n) !== -1){
+            result0.push(n);
+        }
+        return result0;
+    })
+    let result = [];
+    for(let i = 0; i < result0.length; i++) {
+        if(s2.indexOf(result0[i]) === -1) {
+            result.push(result0[i])
+        }
+    }
+    return result;
+}
+
+let s0 = ['f', '3', '4', 'k'];
+let s1 = ['4', '1', 'k'];
+let s2 = ['j', '2', '4'];
+
+let t = fun(s0, s1, s2);
+// console.log(t)
+
+
+
+function deepClone(obj) {
+    let newobj = {};
+    if( typeof obj !== 'object' ) {
+        return obj
+    }
+    for(let attr in obj) {
+        newobj[attr] = deepClone(obj[attr])
+    }
+    return newobj
+}
+
+
+function deepClone(obj) {
+    let newobj = {};
+    if(typeof obj !== 'object') {
+        return obj
+    }
+    for(let attr in obj) {
+        newobj[attr] = deepClone(obj[attr])
+    }
+    return newobj;
+}
+
+
+function deepClone(obj){
+    let obj1 = JSON.stringify(obj);
+    let obj2 = JSON.parse(obj1);
+    return obj2;
+}
+
+Array.from(new Set(arr));
+
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/');
+xhr.onreadystatechange = function () {
+    console.log(xhr)
+};
+xhr.send();
+
+// 防抖
+
+function debounce(fn, delay) {
+    let timer = null;
+    return function() {
+        let arg = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(this, arg), delay)
+    }
+}
+
+
+function debounce(fn, delay) {
+    let timer = null;
+    return function() {
+        let arg = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(this, arg), delay)
+    }
+}
+
+function debounce(fn, delay) {
+    let timer = null;
+    return function() {
+        let arg = arguments;
+        if(timer) {
+            clearTimeout(timer)
+        }
+        timer = setTimeout(() => fn.apply(this, arg), delay)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // const arr = [6, 8, 3, 2, 7, 0];
@@ -35,24 +210,38 @@
 /******  合并排序  ******/
 
 
+
+
+
+
+
+
+
 // var A = [1, 3, 7, 9, 2, 4, 6, 8];
 // merge(A, 0, 4, 8);
 // console.log(A);
 
 
-//
+
+
+
+
+
+
+
 // let A = [1, 4, 6, 9, 2, 4, 0, 7];
 // merge_sort(A, 0, 8);
 // console.log(A);
 
 /******  快速排序  ******/
-// 快速排序就是找中心点
+
+
 
 // const arr1 = [10, 50, 30, 90, 40, 80, 70];  //
 // const arr2 = [10, 50, 30, 90, 40, 80, 70];  //
 // partition(arr1, 0, 7);
 // partition(arr2, 0, 3);
-// console.log(arr1, arr2)
+// console.log(arr1, arr2);
 
 /**
  *
@@ -61,6 +250,7 @@
  * @param hi
  */
 //
+
 
 
 // const arr3 = [10, 50, 30, 90, 40, 80, 70];
@@ -307,40 +497,40 @@
 
 
 /*****  实现循环队列结构 *****/
-class Queue {
-    constructor(max) {
-        this.data = Array(max);
-        this.max = max;
-        this.length = 0;
-        this.f = 0;
-        this.r = 0;
-    }
-
-    enqueue(item) {
-        if(this.length === this.max) {
-            throw 'queue overflow'
-        }
-        this.length++;
-        this.data[this.r] = item;
-        this.r++;
-        if(this.r === this.max) {
-            this.r = 0;
-        }
-    }
-
-    dequeue() {
-        if(this.length === 0) {
-            throw 'queue underflow'
-        }
-        let ret = this.data[this.f];
-        this.f++;
-        this.length--;
-        if(this.f === this.max) {
-            this.f = 0;
-        }
-        return ret;
-    }
-}
+// class Queue {
+//     constructor(max) {
+//         this.data = Array(max);
+//         this.max = max;
+//         this.length = 0;
+//         this.f = 0;
+//         this.r = 0;
+//     }
+//
+//     enqueue(item) {
+//         if(this.length === this.max) {
+//             throw 'queue overflow'
+//         }
+//         this.length++;
+//         this.data[this.r] = item;
+//         this.r++;
+//         if(this.r === this.max) {
+//             this.r = 0;
+//         }
+//     }
+//
+//     dequeue() {
+//         if(this.length === 0) {
+//             throw 'queue underflow'
+//         }
+//         let ret = this.data[this.f];
+//         this.f++;
+//         this.length--;
+//         if(this.f === this.max) {
+//             this.f = 0;
+//         }
+//         return ret;
+//     }
+// }
 /** 实现一个单链表 **/
 // function Node(key) {
 //     this.key = key;
