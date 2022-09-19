@@ -15,12 +15,26 @@ Test.describe("monkeyCount", _ => {
 });
  */
 
+// way 1
+// function monkeyCount(n) {
+//     return Array.from({length: n}, (element, index) => index + 1)
+// }
+
+
+// way 2
 function monkeyCount(n) {
-    let a = [];
-    for(let i = 1; i <= n; i++) {
-        a.push(i);
-    }
-    return a;
+    return Array.from({length: n}).map((element, index) => index + 1)
 }
+
+
+
+
+// function monkeyCount(n) {
+//     let a = [];
+//     for(let i = 1; i <= n; i++) {
+//         a.push(i);
+//     }
+//     return a;
+// }
 
 console.log(monkeyCount(5));
