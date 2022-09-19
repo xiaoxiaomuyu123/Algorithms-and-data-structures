@@ -20,7 +20,7 @@ Note: if there is nothing to sum, the sum is default to 0.
 //     }
 // }
 
-// todo reduce 初始值 https://segmentfault.com/a/1190000039264226
+// todo reduce 初始值 https://segmentfault.com/a/1190000039264226，reduce 设置初值
 function positiveSum(arr) {
     return arr.filter(item => item >= 0).reduce((pre, cur) => pre + cur, 0)
 }
