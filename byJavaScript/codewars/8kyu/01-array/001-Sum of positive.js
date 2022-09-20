@@ -54,3 +54,18 @@ function static(arr) {
 }
 
 console.log("first", static(['A', 'N', 'M', 'A']))
+
+/*
+2. 数组去重
+ */
+
+function setArr(arr) {
+    let result = arr.reduce((pre, cur) => {
+        if(pre.includes(cur)) {
+            return pre
+        } else {
+            pre.concat(cur)
+        }
+    }, [])
+    return result
+}
