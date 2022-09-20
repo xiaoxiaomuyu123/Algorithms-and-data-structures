@@ -30,6 +30,27 @@ console.log(positiveSum([-1,-2,-3,-4,-5]))
 
 let arrTwo = [11, 22, 33]
 arrTwo.reduce((cur, pre, index)=> {
-    console.log(cur, pre, index)
     return cur
 }, 0)
+
+
+// reduce 的高级用法
+/*
+1. 统计数组里面元素出现的次数
+ */
+
+function static(arr) {
+   let result = arr.reduce((pre, cur) => {
+       // 判断对象里面是否有某个元素
+        if(cur in pre) {
+            pre[cur] ++
+        } else {
+            pre[cur] = 1
+        }
+        return pre
+    }, {})
+    return result
+    // 要把 result 返回
+}
+
+console.log("first", static(['A', 'N', 'M', 'A']))
