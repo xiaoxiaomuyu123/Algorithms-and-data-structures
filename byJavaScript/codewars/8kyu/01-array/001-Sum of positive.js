@@ -64,8 +64,42 @@ function setArr(arr) {
         if(pre.includes(cur)) {
             return pre
         } else {
-            pre.concat(cur)
+            // concat 方法会返回一个新数组
+            return pre.concat(cur)
         }
     }, [])
     return result
 }
+
+console.log('second', setArr([1, 2, 2, 3, 3]))
+
+/*
+3. 将二维数组转换成一维数组
+ */
+
+function flatArr(arr) {
+    let result = arr.reduce((pre, cur) => {
+        return pre.concat(cur)
+    }, [])
+    return result
+}
+console.log("third", flatArr([[1, 2, 3], [4, 5], [6, 7], 8]))
+
+/*
+4. 对象里面属性求和
+ */
+let arrObj = [
+    {name: 'a', score: 1},
+    {name: 'b', score: 2},
+    {name: 'a', score: 3},
+    {name: 'a', score: 4},
+    {name: 'a', score: 5},
+]
+function sumObject(arr) {
+    let result = arr.reduce((pre, cur) => {
+        return pre + cur.score
+    }, 0)
+    return result
+}
+
+console.log("forth", sumObject(arrObj))
