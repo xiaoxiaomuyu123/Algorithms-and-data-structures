@@ -61,6 +61,7 @@ console.log("first", static(['A', 'N', 'M', 'A']))
 
 function setArr(arr) {
     let result = arr.reduce((pre, cur) => {
+        // 判断数组和字符串里面是否包含某个元素
         if(pre.includes(cur)) {
             return pre
         } else {
