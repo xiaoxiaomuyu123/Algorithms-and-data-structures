@@ -37,4 +37,4 @@ function firstNonConsecutive (arr) {
     return result
 }
 
-console.log(firstNonConsecutive([-6,-5,-4,-3,-2,-1,0,1,2]))
+console.log(firstNonConsecutive([6,7,8,9,10,11,12,13,14,15]))
